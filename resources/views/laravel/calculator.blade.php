@@ -16,9 +16,41 @@
             <label for="num2" class="">Enter Number 2: </label>
             <input type="number" min ="0" name="number2" id="num2">
             <br>
-            <button class="flex justify-center bg-blue-500 
-            text-white px-2 py-2 hover:bg-blue-800 mx-auto mt-5">Calculate</button>
+        <select id="operator" onchange="calculateSum()" class="mx-auto mt-5 text-center">
+            <option value="+">SUM</option>
+            <option value="-">MINUS</option>
+            <option value="*">MULTIPLY</option>
+            <option value="/">DIVIDE</option>
+        </select>
+        <!-- <button class="flex justify-center bg-blue-500 
+            text-white px-2 py-2 hover:bg-blue-800 mx-auto mt-5" onclick="calculateSum()"> Submit </button> -->
         </form>
+        <p id="demo"></p>
+    <script>
+        function calculateSum(){
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            var operator = document.getElementById("operator").value;
+            var result;
+            if(operator == '+'){
+                result = num1 + num2;
+            }
+            else if(operator == '-'){
+                result = num1 - num2;
+            }
+            else if(operator == '*'){
+                result = num1 * num2;
+            }
+            else if(operator == '/'){
+                result = num1 / num2;
+            }
+            if(isNaN(result)){
+                result = "No INPUT!";
+            }
+
+            document.getElementById('demo').textContent = 'Result: ' + result;
+        }
+    </script>
     </div>
 </body>
 </html>
